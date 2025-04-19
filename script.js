@@ -1,6 +1,8 @@
 const chatBubble = document.getElementById("chatBubble");
 const aboutSection = document.getElementById("about");
 
+
+
 function say(message, duration = 3500) {
   chatBubble.innerText = message;
   chatBubble.style.display = "block";
@@ -35,13 +37,14 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // 🔹 Zoom the window image slowly (over 150vh)
 gsap.to('.hero-img', {
-  scale: 18,
+  scale: 8,
+  transformOrigin: 'center center',
   ease: 'power2.out',
   scrollTrigger: {
     trigger: '.zoomScroll',
     start: 'top top',
     end: 'bottom+=100 top', // zoom spans full 150vh
-    scrub: true,
+    scrub: 0.5,
   }
 });
 
