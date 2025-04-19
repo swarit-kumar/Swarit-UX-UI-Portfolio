@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swarit-Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
+
+  <!-- GSAP Plugins after core library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <span></span>
+      <div class="logo">Swarit</div>
+      <ul class="menu">
+        <li><a href="#about" onclick="scrollToSection(event, 'about')">about</a></li>
+        <li><a href="#projects" onclick="scrollToSection(event, 'projects')">works</a></li>
+        <li><a href="#illustration" onclick="scrollToSection(event, 'illustration')">illustrations</a></li>
+        <li><a href="#gallery" onclick="scrollToSection(event, 'gallery')">gallery</a></li>
+        <li><a href="#contact" onclick="scrollToSection(event, 'contact')">contact</a></li>
+      </ul>
+      <!-- <div class="btn">gmail</div> -->
+      <div class="btn">
+        <a href="http://www.linkedin.com/in/swarit-kumar" target="_blank"
+          style="text-decoration: none; color: inherit;">linkedIn</a>
+      </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Visitor Tab -->
+  <div class="visitor-tab">
+    Visitors: <span id="visitorCount">0</span>
+  </div>
+
+  <!-- Music Button -->
+  <div class="music-button" style="position: absolute;">
+    <button onmouseover="showMusicBubble()" onmouseout="hideMusicBubble()" onclick="toggleMusic()">
+      <img
+        src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWtrNDJkZTVidGJ4OXZmeXNmZ3JlcjRjMDc1eDRlZDlxcm85cTRjcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LqUhfhJkcEfRleKxa9/giphy.gif"
+        alt="Music" style="width: 30px; height: 30px;">
+    </button>
+    <audio id="backgroundMusic" src="./audio/john-williams-welcome-to-jurassic-park.mp3"></audio>
+    <div id="musicBubble"
+      style="display: none; position: absolute; top: -90px; left: 50%; transform: translateX(-50%); background: #6f6f6f; color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px;">
+      Listen my favorite track
+    </div>
+  </div>
+
+  <script>
+    function showMusicBubble() {
+      document.getElementById('musicBubble').style.display = 'block';
+    }
+
+    function hideMusicBubble() {
+      document.getElementById('musicBubble').style.display = 'none';
+    }
+  </script>
+
+  <script>
+    const musicButton = document.querySelector('.music-button button');
+    const musicImage = musicButton.querySelector('img');
+    const music = document.getElementById('backgroundMusic');
+
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+        // Change the button image and background color when music is off
+        musicImage.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWtrNDJkZTVidGJ4OXZmeXNmZ3JlcjRjMDc1eDRlZDlxcm85cTRjcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LqUhfhJkcEfRleKxa9/giphy.gif";
+        musicButton.style.backgroundColor = "rgb(86 234 254)";
+      } else {
+        music.play();
+        isPlaying = true;
+        // Change the button image and background color when music is playing
+        musicImage.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDMwcjdob2M0dHR6b2k3czNpc200enplMm0yeGlkMzI5NXFiZ3RyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7xANmBuriCxdwl2CPE/giphy.gif";
+        musicButton.style.backgroundColor = "white";
+      }
+    }
+  </script>
+
+
+
+  <div id="ai-agent">
+    <img
+      src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzNzYWo3Z3VwNHdpb20xbGc1dnB1b3BsaHp1YjY4MXYwd2phc2YxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WRuBiZKB6xgsS9DrFA/giphy.gif"
+      alt="AI Avatar" />
+    <div class="chat-bubble" id="chatBubble">Hi there! 👋</div>
+  </div>
+
+  <!-- Landing Section with window.png -->
+  <!-- Zoom window image -->
+  <div class="hero-zoom">
+    <img src="./images/window copy.webp" alt="Window" class="hero-img" />
+  </div>
+
+  <!-- First scroll zone (zoom only) -->
+  <div class="zoomScroll"></div>
+
+  <!-- Second scroll zone (parallax trigger) -->
+  <div class="scrollDist"></div>
+
+
+  <!-- Parallax Section -->
+  <main>
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <mask id="m">
+        <g class="cloud1">
+          <rect fill="#ffff" width="100%" height="801" y="799" />
+          <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800" />
+        </g>
+      </mask>
+
+      <image class="sky" xlink:href="https://assets.codepen.io/721952/sky.jpg" width="1200" height="590" />
+      <image class="mountBg"
+        xlink:href="https://media-hosting.imagekit.io/70d51161ced244fa/mountBg.png?Expires=1839504369&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=SixKWRm6bRqDlBjfkp4IuXhhlwynglpqCT1ZBberRWPPmw~z9tC~EWxrIXLY2oIfetEmmX~auNyunvJW1-kqDAHAMlme0NAObNXfbDHPKaVN0ZiUv4xk6v~nsW1Wv9unRZrRdA0MAOCQY902Bkl0f7yYP6BNlkUW9utm6hw5rotwfIcoatQvRg2xno5Q8ejN4gZ86DF1KCP2vIz9NWW8232~h~qubYMEROvJ42-nXXAx3kEc603co4VK8kjgxPwb6BFH~4NZdBOrLq9ZghbEwjwBY7bQrxMtT~YSIIoVRuEKBZYIRqHyNpz4q4bjfRPdoRip6IpjE6pNktcP8QL0hQ__"
+        width="1200" height="800" />
+      <image class="mountMg" xlink:href="https://assets.codepen.io/721952/mountMg.png" width="1200" height="800" />
+      <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800" />
+      <image class="mountFg" xlink:href="https://assets.codepen.io/721952/mountFg.png" width="1200" height="800" />
+      <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800" />
+      <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800" />
+      <!-- Replace this in your SVG section -->
+      <text fill="#fff" x="450" y="250">EXPLORE</text>
+
+      <g mask="url(#m)">
+        <rect fill="white" width="100%" height="100%" />
+        <text x="450" y="250" fill="#162a43">FURTHER</text>
+      </g>
+
+
+    </svg>
+
+
+
+  </main>
+
+
+  <!-- New About Me Section -->
+  <div id="about" class="about">
+    <div class="container">
+      <div class="about-me-container">
+        <div class="about-me-title" style="color: white;">
+          About <br> Swarit Kumar
+        </div>
+
+        <div class="about-me-flex-container">
+          <div class="about-me-image">
+            <div class="back-div"></div>
+            <div class="black-image"><img src="./images/about me1.jpg" alt="black"></div>
+            <div class="main-image"><img src="./images/about me1.jpg" alt="swarit"></div>
+          </div>
+          <div class="about-me-content">
+
+            <div class="logo" style="margin-bottom: 0; "><img src="./images/logo-removebg-preview.png" alt="smit"></div>
+
+            <div class="text">
+              Hey there! I'm Swarit — a Computer Science and Design student at IIIT Delhi, born and raised in the
+              vibrant city of New Delhi. I’m passionate about blending creativity with technology to build thoughtful,
+              impactful experiences. Glad you stopped by!
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="mail-button mail-button2">
+          <a href="mailto:swarit23540@iiitd.ac.in"><img
+              src="https://raw.githubusercontent.com/Smit-Prajapati/prajapatismit/20391be8bf1ed24ef0e5da066bf68a5f6ee78fa1/images/mail.svg"
+              alt="mail"></a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div id="projects" class="projects">
+    <div class="container">
+      <div class="title">MY RECENT<br> WORK</div>
+      <div class=card10>
+        <div class=image>
+          <img href="./images/CAD.png" src=./images/CAD.png>
+        </div>
+        <div class=content>
+          <h3>3-D MODELLING</h3>
+          <p>Modeled a modern desk lamp in Fusion 360 with a starfish-inspired wooden base and sleek metal arc.
+            Focused on realistic materials and clean, functional design.</p>
+        </div>
+      </div>
+      <div class=card1>
+        <div class=image>
+          <img href="./images/dp.png" src=./images/dp.png>
+        </div>
+        <div class=content>
+          <h3>Deadpool 3D Layered Artwork</h3>
+          <p>Designed and laser-cut a multi-layered 3D Deadpool artwork using MDF sheets. Combined digital design with
+            hands-on assembly to create depth and dimension.</p>
+        </div>
+      </div>
+      <div class=card2>
+        <div class=image>
+          <img href="./images/Screenshot_17-4-2025_191454_.jpeg" src=./images/Screenshot_17-4-2025_191454_.jpeg>
+        </div>
+        <div class=content>
+          <h3>Nova Bank – DBMS Project</h3>
+          <p>Developed a full-stack banking management system with secure transactions, user dashboards, and role-based
+            access for clients, staff, and admins.</p>
+        </div>
+      </div>
+      <div class=card3>
+        <div class=image>
+          <img href="./images/p.png" src=./images/p.png>
+        </div>
+        <div class=content>
+          <h3>PillPal – Medicine Detector & Reminder App</h3>
+          <p>Built a smart application to detect pills and send timely medication reminders, helping users manage their
+            health more effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="illustration" class="illustration">
+    <div id="smooth-wrapper">
+      <div id="smooth-content" class="smooth-content">
+        <div class="content-wrapper">
+          <div class="section-intro">
+            <h1 class="title1">ILLUSTRATIONS</h1>
+          </div>
+          <div class="section-grid">
+            <div class="grid">
+              <div class="col">
+                <img src="./images/Music Festival Madness.png" alt="" />
+                <img src="./images/water.png" alt="">
+              </div>
+              <div class="col">
+                <img src="./images/2023540_Swarit Kumar_Assign01.png" alt="" />
+                <img src="./images/bird.png" alt="">
+                <img src="./images/cipd.png" alt="">
+              </div>
+              <div class="col">
+                <img src="./images/ss1.png" alt="" />
+                <img src="./images/building.png" alt="">
+                <img src="./images/football.png" alt="">
+                <img src="./images/corruption.png" alt="">
+              </div>
+              <div class="col">
+                <img src="images/logo.png" alt="">
+                <img src="./images/anokhisoch.png" alt="">
+                <img src="./images/lib.png" alt="">
+                <img src="./images/Screenshot 2025-02-13 185731.png" alt="">
+                <img src="./images/cricket.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="section-footer"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <div id="gallery" class="gallery">
+    <div class="section-intro">
+      <h1 class="title1">GALLERY</h1>
+      <br>
+      <h3 class="title1child">Some pictures involving my work.</h3>
+    </div>
+    <div class="container">
+      <div id="card" class="card">
+
+        <div class="card__content">
+          <div class="card__image"></div>
+        </div>
+        <div class="card__name__image"></div>
+
+        <div class="card__gloss"></div>
+
+      </div>
+      <div id="cardq" class="cardq">
+
+        <div class="cardq__content">
+          <div class="cardq__image"></div>
+        </div>
+        <div class="cardq__name__image"></div>
+
+        <div class="cardq__gloss"></div>
+
+      </div>
+      <div id="cardw" class="cardw">
+
+        <div class="cardw__content">
+          <div class="cardw__image"></div>
+        </div>
+        <div class="cardw__name__image"></div>
+
+        <div class="cardw__gloss"></div>
+
+      </div>
+      <div id="carde" class="carde">
+
+        <div class="carde__content">
+          <div class="carde__image"></div>
+        </div>
+        <div class="carde__name__image"></div>
+
+        <div class="carde__gloss"></div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="contact" class="contact" style="z-index: 400;">
+    <div class="wrapper">
+      <div class="title2">
+        Contact Form
+      </div>
+      <form class="form">
+        <input type="text" class="name field-in font" placeholder="Your Name" />
+
+        <input type="text" class="email field-in font" placeholder="Email" />
+
+        <textarea class="message field-in font" placeholder="Message"></textarea>
+
+        <button class="submit font" href="#">Submit</button>
+      </form>
+      <div class="shadow"></div>
+    </div>
+
+    <div class="myfooter">
+      <div class="logos">
+        <a href="http://www.linkedin.com/in/swarit-kumar" target="_blank">
+          <img src="https://img.icons8.com/?size=100&id=67570&format=png&color=000000" alt="LinkedIn"
+            style="width: 50px;height: 50px;margin-right: 10px;">
+        </a>
+        <a href="mailto:swarit23540@iiitd.ac.in">
+          <img src="https://img.icons8.com/?size=100&id=EgRndDDLh8kS&format=png&color=000000" alt="Gmail"
+            style="width:40px; height:40px;justify-content: center;align-items: center;padding-bottom: 12px;">
+        </a>
+      </div>
+
+      <div class="copyright" style="x: 30%;">
+        copyright @ SwaritKumar 2025
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Essential GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <!-- ScrollSmoother for smooth scrolling effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+
+
+  <!-- Your custom script file -->
+  <script src="script.js"></script>
+</body>
+
+</html>
