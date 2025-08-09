@@ -1,8 +1,6 @@
 const chatBubble = document.getElementById("chatBubble");
 const aboutSection = document.getElementById("about");
 
-
-
 function say(message, duration = 3500) {
   chatBubble.innerText = message;
   chatBubble.style.display = "block";
@@ -26,25 +24,19 @@ window.addEventListener("load", () => {
   }, 16800); // 10 seconds delay after the second message
 });
 
-const aiAgent = document.getElementById("ai-agent");
-
-aiAgent.addEventListener("click", () => {
-  say("Scroll down slowly ⬇️", 4000); // Show the message for 4 seconds
-});
 
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // 🔹 Zoom the window image slowly (over 150vh)
 gsap.to('.hero-img', {
-  scale: 8,
-  transformOrigin: 'center center',
+  scale: 18,
   ease: 'power2.out',
   scrollTrigger: {
     trigger: '.zoomScroll',
     start: 'top top',
     end: 'bottom+=100 top', // zoom spans full 150vh
-    scrub: 0.5,
+    scrub: true,
   }
 });
 
@@ -165,19 +157,6 @@ gsap.from(".grid", {
 
 
 
-function getRandomVisitorCount() {
-  return Math.floor(Math.random() * 3) + 1; // Random number between 1 and 6
-}
-
-function updateVisitorTab() {
-  const visitorCountElement = document.getElementById('visitorCount');
-  const randomCount = getRandomVisitorCount();
-  visitorCountElement.textContent = randomCount;
-}
-
-updateVisitorTab();
-
-setInterval(updateVisitorTab, 20000); 
 
 
 
@@ -192,218 +171,3 @@ setInterval(updateVisitorTab, 20000);
 
 
 
-
-
-
-
-(function() {
-  "use strict";
-  
-  var card = document.getElementById('card'),
-      gloss = card.querySelector('.card__gloss'),
-      content = card.querySelector('.card__content'),
-      width = window.innerWidth,
-      height = window.innerHeight;
-  
-  
-  function init() {
-    bindMouse();
-    
-    // Initial tilt
-    light(350, -125);
-    tilt(350, -125);    
-  }
-  
-  function bindMouse() {
-    document.addEventListener('mousemove', (event) => {
-      let x = event.clientX - (width / 2),
-          y = event.clientY - (height / 2);
-
-      light(x, y);
-      tilt(x, y);
-    });
-  }
-  
-  
-  function light(x, y) {
-    let angle = (Math.atan2(y, x) * 180) / Math.PI - 90;
-    
-    gloss.style.background = 'linear-gradient(' + angle + 'deg, rgba(255, 255, 255,' + y / height * .9 + ') 0%, rgba(255, 255, 255, 0) 80%)';    
-  }
-  
-  function tilt(x, y) {
-    let force = 80,
-        rx = (x / width) * force,
-        ry = (y / height) * -force;
-
-    card.style.transform = 'rotateY(' + (rx) + 'deg) rotateX(' + (ry) + 'deg)';    
-    // content.style.transform = 'translateX(' + (rx * .75) + 'px) translateY(' + (ry * .75) + 'px)';
-  }
-  
-  
-  
-  
-  init();
-  
-})();
-
-
-
-
-
-(function() {
-  "use strict";
-  
-  var card = document.getElementById('cardq'),
-      gloss = card.querySelector('.cardq__gloss'),
-      content = card.querySelector('.cardq__content'),
-      width = window.innerWidth,
-      height = window.innerHeight;
-  
-  
-  function init() {
-    bindMouse();
-    
-    // Initial tilt
-    light(350, -125);
-    tilt(350, -125);    
-  }
-  
-  function bindMouse() {
-    document.addEventListener('mousemove', (event) => {
-      let x = event.clientX - (width / 2),
-          y = event.clientY - (height / 2);
-
-      light(x, y);
-      tilt(x, y);
-    });
-  }
-  
-  
-  function light(x, y) {
-    let angle = (Math.atan2(y, x) * 180) / Math.PI - 90;
-    
-    gloss.style.background = 'linear-gradient(' + angle + 'deg, rgba(255, 255, 255,' + y / height * .9 + ') 0%, rgba(255, 255, 255, 0) 80%)';    
-  }
-  
-  function tilt(x, y) {
-    let force = 80,
-        rx = (x / width) * force,
-        ry = (y / height) * -force;
-
-    card.style.transform = 'rotateY(' + (rx) + 'deg) rotateX(' + (ry) + 'deg)';    
-    // content.style.transform = 'translateX(' + (rx * .75) + 'px) translateY(' + (ry * .75) + 'px)';
-  }
-  
-  
-  
-  
-  init();
-  
-})();
-
-
-
-(function() {
-  "use strict";
-  
-  var card = document.getElementById('cardw'),
-      gloss = card.querySelector('.cardw__gloss'),
-      content = card.querySelector('.cardw__content'),
-      width = window.innerWidth,
-      height = window.innerHeight;
-  
-  
-  function init() {
-    bindMouse();
-    
-    // Initial tilt
-    light(350, -125);
-    tilt(350, -125);    
-  }
-  
-  function bindMouse() {
-    document.addEventListener('mousemove', (event) => {
-      let x = event.clientX - (width / 2),
-          y = event.clientY - (height / 2);
-
-      light(x, y);
-      tilt(x, y);
-    });
-  }
-  
-  
-  function light(x, y) {
-    let angle = (Math.atan2(y, x) * 180) / Math.PI - 90;
-    
-    gloss.style.background = 'linear-gradient(' + angle + 'deg, rgba(255, 255, 255,' + y / height * .9 + ') 0%, rgba(255, 255, 255, 0) 80%)';    
-  }
-  
-  function tilt(x, y) {
-    let force = 80,
-        rx = (x / width) * force,
-        ry = (y / height) * -force;
-
-    card.style.transform = 'rotateY(' + (rx) + 'deg) rotateX(' + (ry) + 'deg)';    
-    // content.style.transform = 'translateX(' + (rx * .75) + 'px) translateY(' + (ry * .75) + 'px)';
-  }
-  
-  
-  
-  
-  init();
-  
-})();
-
-
-
-(function() {
-  "use strict";
-  
-  var card = document.getElementById('carde'),
-      gloss = card.querySelector('.carde__gloss'),
-      content = card.querySelector('.carde__content'),
-      width = window.innerWidth,
-      height = window.innerHeight;
-  
-  
-  function init() {
-    bindMouse();
-    
-    // Initial tilt
-    light(350, -125);
-    tilt(350, -125);    
-  }
-  
-  function bindMouse() {
-    document.addEventListener('mousemove', (event) => {
-      let x = event.clientX - (width / 2),
-          y = event.clientY - (height / 2);
-
-      light(x, y);
-      tilt(x, y);
-    });
-  }
-  
-  
-  function light(x, y) {
-    let angle = (Math.atan2(y, x) * 180) / Math.PI - 90;
-    
-    gloss.style.background = 'linear-gradient(' + angle + 'deg, rgba(255, 255, 255,' + y / height * .9 + ') 0%, rgba(255, 255, 255, 0) 80%)';    
-  }
-  
-  function tilt(x, y) {
-    let force = 80,
-        rx = (x / width) * force,
-        ry = (y / height) * -force;
-
-    card.style.transform = 'rotateY(' + (rx) + 'deg) rotateX(' + (ry) + 'deg)';    
-    // content.style.transform = 'translateX(' + (rx * .75) + 'px) translateY(' + (ry * .75) + 'px)';
-  }
-  
-  
-  
-  
-  init();
-  
-})();
