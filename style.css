@@ -24,11 +24,21 @@ html {
 
 }
 
+
 @font-face {
     font-family: w;
     src: url(./fonts/WanoQuin-ExtraBold.otf);
 }
 
+.text1{
+    margin: 45px;
+    font-family: 'w';
+    font-size: 40px;
+    font-weight: 700;
+    margin-left: 10%;
+    text-align: center;
+    margin-bottom: 5%;
+}
 /* Navbar styles */
 .navbar {
     display: flex;
@@ -830,9 +840,11 @@ img {
 .wrapper {
     width: 50%;
     height: 86.5%;
-    margin: 0 auto; /* Center the wrapper */
-    padding: 0 20px; /* Add padding for spacing */
-    box-sizing: border-box; 
+    margin: 0 auto;
+    /* Center the wrapper */
+    padding: 0 20px;
+    /* Add padding for spacing */
+    box-sizing: border-box;
 }
 
 .font {
@@ -1615,45 +1627,57 @@ footer {
 
 /* For tablets (768px and below) */
 @media (max-width: 768px) {
+
     /* About Section */
     .about-me-flex-container {
-      flex-direction: column; /* Stack content vertically */
-      align-items: center;
-      margin-left: 0;
-      gap: 20px; /* Add spacing between elements */
-    }
-  
-    .about-me-image {
-      width: 250px; /* Scale down the image */
-      height: 250px;
-    }
-  
-    .about-me-content {
-      text-align: center; /* Center-align text */
-      padding: 0 15px; /* Add padding for better spacing */
-    }
-  
-    .about-me-content .text {
-      font-size: 16px; /* Adjust font size */
+        flex-direction: column;
+        /* Stack content vertically */
+        align-items: center;
+        margin-left: 0;
+        gap: 20px;
+        /* Add spacing between elements */
     }
 
-    
-  
+    .about-me-image {
+        width: 250px;
+        /* Scale down the image */
+        height: 250px;
+    }
+
+    .about-me-content {
+        text-align: center;
+        /* Center-align text */
+        padding: 0 15px;
+        /* Add padding for better spacing */
+    }
+
+    .about-me-content .text {
+        font-size: 16px;
+        /* Adjust font size */
+    }
+
+
+
     /* Projects Section */
     .projects .container {
-      flex-direction: column; /* Stack project cards vertically */
-      align-items: center;
-      height: auto; /* Allow height to adjust dynamically */
-      padding: 0 15px; /* Add padding for smaller screens */
+        flex-direction: column;
+        /* Stack project cards vertically */
+        align-items: center;
+        height: auto;
+        /* Allow height to adjust dynamically */
+        padding: 0 15px;
+        /* Add padding for smaller screens */
     }
-  
+
     .projects .container .card10,
     .projects .container .card1,
     .projects .container .card2,
     .projects .container .card3 {
-        margin: 20px 10px; /* Consistent margin for all cards */
+        margin: 20px 10px;
+        /* Consistent margin for all cards */
         max-width: 320px;
-        height: auto; /* Let the height adjust dynamically */
+        height: auto;
+        /* Let the height adjust dynamically */
         background-color: #fff;
         padding: 20px 15px;
         display: flex;
@@ -1662,83 +1686,110 @@ footer {
         transition: 0.3s ease-in-out;
         border-radius: 15px;
     }
-  
+
     .projects .container .title {
-      font-size: 50px; /* Adjust title size */
-      text-align: center; /* Center-align the title */
-      top: 20px; /* Adjust positioning */
-      left: 0;
+        font-size: 50px;
+        /* Adjust title size */
+        text-align: center;
+        /* Center-align the title */
+        top: 20px;
+        /* Adjust positioning */
+        left: 0;
     }
 
     .title1 {
-        font-size: 50px; /* Reduce font size for tablets */
+        font-size: 50px;
+        /* Reduce font size for tablets */
         /* margin: 15px 0; */
     }
 
     .wrapper {
-        width: 80%; /* Reduce width for smaller screens */
-        padding: 0 10px; /* Adjust padding */
+        width: 80%;
+        /* Reduce width for smaller screens */
+        padding: 0 10px;
+        /* Adjust padding */
     }
-  }
-  
-  /* For mobile devices (480px and below) */
-  @media (max-width: 480px) {
+}
+
+/* For mobile devices (480px and below) */
+@media (max-width: 480px) {
+
     /* About Section */
     .about-me-flex-container {
-      gap: 15px; /* Reduce spacing for smaller screens */
+        gap: 15px;
+        /* Reduce spacing for smaller screens */
     }
-  
+
     .about-me-image {
-      width: 200px; /* Further scale down the image */
-      height: 200px;
+        width: 200px;
+        /* Further scale down the image */
+        height: 200px;
     }
-  
+
     .about-me-content .text {
-      font-size: 14px; /* Adjust font size for readability */
+        font-size: 14px;
+        /* Adjust font size for readability */
     }
-  
+
     /* Projects Section */
     .projects .container .card10,
     .projects .container .card1,
     .projects .container .card2,
     .projects .container .card3 {
-      width: 100%; /* Full width for smaller screens */
-      margin: 10px 0; /* Reduce spacing */
-    }
-  
-    .projects .container .title {
-      font-size: 40px; /* Further reduce title size */
-      text-align: center;
-      top: 10px;
-    }
-    .title1 {
-        font-size: 55px; /* Further reduce font size for phones */
-        /* margin: 10px 0; */
-        word-wrap: break-word; /* Ensure text wraps if necessary */
+        width: 100%;
+        /* Full width for smaller screens */
+        margin: 10px 0;
+        /* Reduce spacing */
     }
 
-    .title1child{
+    .projects .container .title {
+        font-size: 40px;
+        /* Further reduce title size */
+        text-align: center;
+        top: 10px;
+    }
+
+    .title1 {
+        font-size: 55px;
+        /* Further reduce font size for phones */
+        /* margin: 10px 0; */
+        word-wrap: break-word;
+        /* Ensure text wraps if necessary */
+    }
+
+    .title1child {
         margin-top: 10px;
         /* margin-bottom: 10px; */
     }
-    .container{
+
+    .container {
         margin-top: 60px;
     }
+
     .wrapper {
-        width: 90%; /* Further reduce width for mobile devices */
-        padding: 0 5px; /* Minimize padding */
+        width: 90%;
+        /* Further reduce width for mobile devices */
+        padding: 0 5px;
+        /* Minimize padding */
     }
-    .title2{
+
+    .title2 {
         font-size: 110px;
     }
-    .illustration{
+
+    .illustration {
         height: 80vh;
     }
+
     .menu {
-        display: none; /* Hide the menu on mobile devices */
+        display: none;
+        /* Hide the menu on mobile devices */
     }
+
     .mountBg {
-        transform: translateX(-60px); /* Move the background 50px to the left */
+        transform: translateX(-60px);
+        /* Move the background 50px to the left */
     }
-    
-  }
+
+}
+
